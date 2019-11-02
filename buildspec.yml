@@ -14,23 +14,23 @@ phases:
   post_build:
     commands:
       # copy the contents of /build to S3
-      - aws s3 cp --recursive ./build s3://usermgmt-app/ 
+      - aws s3 cp --recursive ./build s3://demoapi31static/ 
       # set the cache-control headers for service-worker.js to prevent
       # browser caching
       - >
         aws s3 cp  
         --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
-        ./build/service-worker.js s3://usermgmt-app/
+        ./build/service-worker.js s3://demoapi31static/
       # set the cache-control headers for index.html to prevent
       # browser caching
       - >
         aws s3 cp  
         --cache-control="max-age=0, no-cache, no-store, must-revalidate" 
-        ./build/index.html s3://usermgmt-app/
+        ./build/index.html s3://demoapi31static/
       # invalidate the CloudFront cache for index.html and service-worker.js
       # to force CloudFront to update its edge locations with the new versions
       - >
-        aws cloudfront create-invalidation --distribution-id ETX47I8H1Z8XX 
+        aws cloudfront create-invalidation --distribution-id E2SK7A2VTINT4O 
         --paths /index.html /service-worker.js        
 artifacts:
   files:
