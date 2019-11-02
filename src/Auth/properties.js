@@ -1,3 +1,3 @@
 export const properties = {
-    version: "V5"
+    version: "V6"
 };
